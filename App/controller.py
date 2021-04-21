@@ -74,3 +74,11 @@ def countReproductions(catalog, carac):
 # Funciones de ordenamiento
 
 # Funciones de consulta sobre el catálogo
+
+
+def indexHeight(catalog):
+    return model.indexHeight(catalog)
+
+
+def indexSize(catalog):
+    return model.indexSize(catalog)

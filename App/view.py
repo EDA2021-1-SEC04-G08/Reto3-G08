@@ -61,6 +61,7 @@ while True:
     if int(inputs[0]) == 1:
         print("\nInicializando....")
         catalog = controller.init()
+        print('Se inicializo el catalogo\n')
 
     elif int(inputs[0]) == 2:
         print("Cargando información de los archivos ....")
@@ -74,7 +75,9 @@ while True:
         lmin = input('Seleccione un limite minimo: ')
         lmax = input('Seleccione un limite maximo: ')
         controller.countReproductions(catalog, carac)
-        print(catalog['req1'])
+        print('Altura del arbol: ' + str(controller.indexHeight(catalog)))
+        print('Elementos en el arbol: ' + str(controller.indexSize(catalog))
+              + '\n')
 
     else:
         sys.exit(0)

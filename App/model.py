@@ -154,6 +154,15 @@ def newDataEntry(song):
 
 # Funciones de consulta
 
+
+def indexHeight(catalog):
+    return om.height(catalog['req1'])
+
+
+def indexSize(catalog):
+    return om.size(catalog['req1'])
+
+
 # Funciones utilizadas para comparar elementos dentro de una lista
 
 
