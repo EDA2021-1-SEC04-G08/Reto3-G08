@@ -26,6 +26,7 @@ import controller
 from DISClib.ADT import list as lt
 assert cf
 
+sys.setrecursionlimit(1000*10)
 
 """
 La vista se encarga de la interacción con el usuario
@@ -34,11 +35,21 @@ se hace la solicitud al controlador para ejecutar la
 operación solicitada
 """
 
+
 def printMenu():
     print("Bienvenido")
+    print("1- Inicializar catalogo")
     print("1- Cargar información en el catálogo")
-    print("2- ")
+    print("2- Caracterizar las reproducciones")
+    print("3- Encontrar musica para festejar")
+    print("4- Encontrar musica para festejar")
+    print("5- Estudiar los generos musicales")
+    print("6- Indicar el genero musical mas escuchado en el tiempo")
 
+
+songsFile = 'context_content_features-small.csv'
+hashtagFile = 'sentiment_values.csv'
+sentimentFile = 'user_track_hashtag_timestamp-small.csv'
 catalog = None
 
 """
@@ -48,10 +59,22 @@ while True:
     printMenu()
     inputs = input('Seleccione una opción para continuar\n')
     if int(inputs[0]) == 1:
-        print("Cargando información de los archivos ....")
+        print("\nInicializando....")
+        catalog = controller.init()
 
     elif int(inputs[0]) == 2:
-        pass
+        print("Cargando información de los archivos ....")
+        controller.loadSongs(catalog, songsFile)
+        controller.loadHashtags(catalog, hashtagFile)
+        controller.loadSentiments(catalog, sentimentFile)
+        print('Se cargo la informacion del catalogo\n')
+
+    elif int(inputs[0]) == 3:
+        carac = input('Ingrese la caracteristica de contenido: ')
+        lmin = input('Seleccione un limite minimo: ')
+        lmax = input('Seleccione un limite maximo: ')
+        controller.countReproductions(catalog, carac)
+        print(catalog['req1'])
 
     else:
         sys.exit(0)

@@ -31,7 +31,45 @@ El controlador se encarga de mediar entre la vista y el modelo.
 
 # Inicialización del Catálogo de libros
 
+
+def init():
+    catalogo = model.newCatalog()
+    return catalogo
+
 # Funciones para la carga de datos
+
+
+def loadSongs(catalog, songsFile):
+    songsFile = cf.data_dir + songsFile
+    input_file = csv.DictReader(open(songsFile, encoding="utf-8"),
+                                delimiter=",")
+    for song in input_file:
+        model.addSong(catalog, song)
+    return catalog
+
+
+def loadHashtags(catalog, hashtagFile):
+    hashtagFile = cf.data_dir + hashtagFile
+    input_file = csv.DictReader(open(hashtagFile, encoding="utf-8"),
+                                delimiter=",")
+    for hashtag in input_file:
+        model.addHashtag(catalog, hashtag)
+    return catalog
+
+
+def loadSentiments(catalog, sentimentFile):
+    sentimentFile = cf.data_dir + sentimentFile
+    input_file = csv.DictReader(open(sentimentFile, encoding="utf-8"),
+                                delimiter=",")
+    for sentiment in input_file:
+        model.addSentiment(catalog, sentiment)
+    return catalog
+
+# Funciones para creacion de datos
+
+
+def countReproductions(catalog, carac):
+    return model.countReproductions(catalog, carac)
 
 # Funciones de ordenamiento
 
