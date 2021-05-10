@@ -68,8 +68,8 @@ def loadSentiments(catalog, sentimentFile):
 # Funciones para creacion de datos
 
 
-def countReproductions(catalog, carac):
-    return model.countReproductions(catalog, carac)
+def countReproductions(catalog, carac, req):
+    return model.countReproductions(catalog, carac, req)
 
 # Funciones de ordenamiento
 
@@ -82,3 +82,23 @@ def indexHeight(catalog):
 
 def indexSize(catalog):
     return model.indexSize(catalog)
+
+
+def getRankByCarac(map, keylo, keyhi):
+    return model.getRankByCarac(map, keylo, keyhi)
+
+
+def musicToCelebrate(catalog, minE, maxE, minD, maxD):
+    return model.musicToCelebrate(catalog, minE, maxE, minD, maxD)
+
+
+def musicToStudy(catalog, minI, maxI, minT, maxT):
+    return model.musicToStudy(catalog, minI, maxI, minT, maxT)
+
+
+def counReproductionsByHour(catalog, minH, maxH):
+    return model.counReproductionsByHour(catalog, minH, maxH)
+
+
+def getUniqueTracks(catalog, lista):
+    return model.getUniqueTracks(catalog, lista)
