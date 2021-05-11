@@ -96,6 +96,10 @@ def musicToStudy(catalog, minI, maxI, minT, maxT):
     return model.musicToStudy(catalog, minI, maxI, minT, maxT)
 
 
+def StudyGenders(catalog, lista, dic):
+    return model.StudyGenders(catalog, lista, dic)
+
+
 def counReproductionsByHour(catalog, minH, maxH):
     return model.counReproductionsByHour(catalog, minH, maxH)
 

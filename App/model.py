@@ -286,8 +286,16 @@ def musicToStudy(catalog, minI, maxI, minT, maxT):
 
 def StudyGenders(catalog, lista, dic):
     countReproductions(catalog, 'tempo', 'req4')
+    lst = lt.newList('ARRAY_LIST')
+    songs = 0
     for genero in lista:
+        vmin = dic[genero][0]
+        vmax = dic[genero][1]
+        tp = getRankByCarac(catalog['req4'], vmin, vmax)
+        songs += tp[0]
+        lt.addLast(lst, tp)
 
+    return (lst, songs)
 
 
 def counReproductionsByHour(catalog, minH, maxH):

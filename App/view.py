@@ -93,6 +93,23 @@ def generos():
     return dic
 
 
+def printStudyGenders(genero, lista, dic):
+    g = genero.upper()
+    values = dic[genero]
+    print('======== ' + g + ' ========')
+    print('For ' + genero + ' the tempo is between ' + str(values[0]) +
+          ' and ' + str(values[1]) + ' BPM')
+    print(genero + ' reproductions: ' + str(lista[0]) + ' with ' +
+          str(lista[1]) + ' different artist')
+    print('----- Some artists for ' + genero + ' -----')
+    i = 1
+    while i <= 10:
+        artist = lt.getElement(lista[2], i)
+        print('Artist ' + str(i) + ': ' + artist)
+        i += 1
+    print('\n')
+
+
 def printTopGenders(lista, answer2):
     hashtags = answer2[1]
     size = lt.size(lista)
@@ -172,6 +189,7 @@ while True:
         print('Total of unique tracks in events: ' + str(answer[1]) + '\n')
         print('--- Unique track_id --- ')
         printSongsToCelebrate(answer[0])
+        print('\n')
 
     elif int(inputs[0]) == 5:
         lminI = input('Seleccione un limite minimo para Instrumentalness: ')
@@ -188,6 +206,7 @@ while True:
         print('Total of unique tracks in events: ' + str(answer[1]) + '\n')
         print('--- Unique track_id --- ')
         printSongsToStudy(answer[0])
+        print('\n')
 
     elif int(inputs[0]) == 6:
         dic = generos()
@@ -222,7 +241,20 @@ while True:
                   ', por favor agregelos e intente nuevamente\n')
 
         else:
-            
+            answer = controller.StudyGenders(catalog, cd, dic)
+            print('\n++++++ Req no.5 results ++++++')
+            print('Total of reproductions: ' + str(answer[1]) + '\n')
+            size1 = len(cd)
+            size2 = lt.size(answer[0])
+            i = 0
+            j = 1
+            while i < size1:
+                genero = cd[i]
+                lista = lt.getElement(answer[0], j)
+                printStudyGenders(genero, lista, dic)
+                i += 1
+                j += 1
+            print('\n')
 
     elif int(inputs[0]) == 7:
         hmin = input('Ingrese una hora como limite minimo: ')
